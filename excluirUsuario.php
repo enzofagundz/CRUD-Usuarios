@@ -1,12 +1,4 @@
 <?php
-
-//Conectar com o banco de dados
-//Buscar o usuário pelo login através da supervariável $_GET
-//Pedir confirmação para excluir o usuário
-//Se confirmar, excluir o usuário e redirecionar para a página de listar usuários com uma mensagem de sucesso
-//Se não confirmar, redirecionar para a página de listar usuários
-//Limpar supervariável $_GET
-
 require_once("header.php");
 $login = $_GET["login"];
 

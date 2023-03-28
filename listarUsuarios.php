@@ -54,7 +54,7 @@ require_once "header.php";
                 echo "<td>$permissao</td>";
                 echo "<td>
                 <div class='d-flex justify-content-around'>
-                <a class='btn btn-info mr-1' href='#'>
+                <a class='btn btn-info mr-1' href='editarUsuario.php?login=$login'>
                         Editar
                 </a>
                 <a class='btn btn-danger ml-1' href='excluirUsuario.php?login=$login'>
