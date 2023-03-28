@@ -8,6 +8,6 @@ $dbhost = "localhost:3306";
 $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 if(!$connection) {
-    echo 'Falha ao conectar' . mysqli_error($connection);
+    echo 'Falha ao conectar' . mysqli_connect_error();
     die();
 }

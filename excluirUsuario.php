@@ -9,6 +9,9 @@
 
 require_once("header.php");
 $login = $_GET["login"];
+
+include_once("sanitizar.php");
+$login = sanitizar($login);
 ?>
 
 <main role="main" class="flex-shrink-0">
@@ -31,7 +34,7 @@ $login = $_GET["login"];
                             <a class="btn btn-success mr-1" href="listarUsuarios.php">
                                 Cancelar
                             </a>
-                            <a class="btn btn-dark ml-1" href="executarExclusao.php">
+                            <a class="btn btn-dark ml-1" href="executarExclusao.php?login=<?php echo $login?>">
                                 Confirmar
                             </a>
                         </div>
