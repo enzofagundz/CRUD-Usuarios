@@ -3,13 +3,13 @@
 require_once("header.php");
 include_once("sanitizar.php");
 include_once("conexaoBanco.php");
-
+session_start();
 $dados = sanitizar($_GET);
 
 $sql = "SELECT * FROM usuario WHERE login = '{$dados['login']}'";
 $mysql = mysqli_query($connection, $sql);
 $row = mysqli_fetch_assoc($mysql);
-
+$_SESSION["login"] = $row["login"];
 print_r($row);
 ?>
 
@@ -19,22 +19,22 @@ print_r($row);
         <div class="row">
             <div class="col-sm-3"></div>
             <div class="col-sm-6">
-                <form action="salvarUsuario.php" method="post" id="formCadastroUsuario">
+                <form action="salvarEdicao.php" method="post" id="formEditarUsuario">
                     <div class="form-group">
                         <label for="login">Login</label>
-                        <input type="text" class="form-control" id="login" name="login" required value="<?php echo $row["login"]?>" disabled>
+                        <input type="text" class="form-control" id="login" name="login" required value="<?php echo $login = isset($row["login"]) ? $row["login"] : ""; ?>" disabled>
                     </div>
                     <div class="form-group">
                         <label for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome" required value="<?php echo $row["nome"]?>">
+                        <input type="text" class="form-control" id="nome" name="nome" required value="<?php echo $nome = isset($row["nome"]) ? $row["nome"] : ""; ?>">
                     </div>
                     <div class="form-group">
                         <label for="senha">Senha</label>
-                        <input type="password" class="form-control" id="senha" name="senha" required value="<?php echo $row["senha"]?>">
+                        <input type="password" class="form-control" id="senha" name="senha" required value="<?php echo $senha = isset($row["senha"]) ? $row["senha"] : ""; ?>">
                     </div>
                     <div class="form-group">
                         <label for="email">Endereço de E-mail</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" required value="<?php echo $row["email"]?>">
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" required value="<?php echo $email = isset($row["email"]) ? $row["email"] : ""; ?>">
                     </div>
                     <div class="form-group">
                         <label for="permissao">Permissão</label>
